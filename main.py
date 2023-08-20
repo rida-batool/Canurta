@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 
 app = FastAPI()
 
@@ -7,6 +8,9 @@ app = FastAPI()
 def read_root():
     return {"200": "Welcome To Heroku"}
 
+@app.get("/resume")
+def get_file():
+    return FileResponse("Rida_Batool_Full_Stack_Developer.pdf")
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: str = None):
